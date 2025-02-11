@@ -12,7 +12,7 @@ Bu repo, 30 gün boyunca Rust programlama dili öğrenme sürecimi içerir.
 
 | Gün  | Konu                     | Açıklama ve Dosya Linki |
 |------|--------------------------|-------------------------|
-| 1    | Rust Nedir? Kurulum ve İlk Program       | [Gün 1 İçeriği]([https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay1.md]) |
+| 1    | Rust Nedir? Kurulum ve İlk Program       | [Gün 1 İçeriği](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay1.md)  |
 | 2    | GünTemel Sözdizimi ve Değişkenler      | [Gün 2 İçeriği]() |
 
 
