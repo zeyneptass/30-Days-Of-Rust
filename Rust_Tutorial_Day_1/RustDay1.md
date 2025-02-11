@@ -58,27 +58,27 @@
 
 - Websitesinde bulunan install butonuyla kurulum için gerekli işlemlerin olduğu sayfaya geçebilirsiniz. Bu sayfada aşağıda görüldüğü gibi Rustup’ın tavsiye edilen ayarlarında Visual Studio C++ araçlarını bilgisayara yüklememiz gerekiyor öncelikle.
 
-![1.png](1.png)
+![1.png](images/1.png)
 
 - Aşağıdaki Download Build Tools butonuna tıkladığımızda [**vs_BuildTools.exe](https://download.visualstudio.microsoft.com/download/pr/9e5046bb-ab15-4a45-9546-cbabed333482/e44275c738c3b146c1acbf6fadd059ff9567ce97113cc584886cdc6985bfe538/vs_BuildTools.exe) dosyasını indirecektir. Bu dosyaya tıklayarak Visual Studio Installer kurulumu yapalım.**
 
-![2.png](2.png)
+![2.png](images/2.png)
 
 - Kurlumdan sonra karşımıza çıkan ekranda C++ ile masaüstü geliştirme seçeneğini indirmemiz gerekiyor.
 
 💡 *Not:  Rust’ı Windows'ta **local olarak** kullanabilmek için **Microsoft C++ Build Tools**'u indirmemizin nedeni, Rust'ın **bazı bileşenlerinin C ve C++ bağımlılıkları** içermesidir. Özellikle **Rust’un Cargo paketi yöneticisiyle** bazı bağımlılıkları derlerken C derleyicisine ihtiyaç duyarız. Rust’ın kendi **Rustc derleyicisi** zaten bağımsızdır ve çoğu Rust kodunu çalıştırmak için ek bir derleyici gerektirmez ancak Rust’ın bazı parçaları **C dilinde yazılmış kodlara** sahiptir. Örneğin, `std` kütüphanesi kısmen C kodlarını içerir ve bunları derlemek için bir C derleyicisine ihtiyaç duyar. Ya da, **`cc` crate** veya **`bindgen` gibi araçlar**, arka planda bir C derleyicisi kullanır. Ek olarak, **Rust’ın resmi paket yöneticisi** `cargo` bazı paketleri indirirken, özellikle **native (yerel) kod içeren paketleri** derlerken **C/C++ derleyicisine** ihtiyaç duyabilir. Özetle, eğer **Rust’ı tamamen bağımsız (bare-metal) bir ortamda** çalıştırmıyorsanız, bazı Rust projelerinin **MSVC (Microsoft Visual C++) toolchain** ile derlenmesi gerekebilir.*
 
-![3.png](3.png)
+![3.png](images/3.png)
 
 ## Windows Kurulumu:
 
 - Daha sonra bilgisayarınızın işletim sistemi hangi bite uygunsa onu seçip indirmeniz gerekir. (Benim bilgisayarım 64-BIT olduğu için onu seçtim.)
 
-![4.png](4.png)
+![4.png](images/4.png)
 
 - İndirdiğimiz exe dosyasını açınca terminalde aşağıdaki seçenek çıkıyor. Buradan default kurulumu yapmak için 1’i seçip klavyede enter’a basmalıyız.
 
-![5.png](5.png)
+![5.png](images/5.png)
 
 ### **Rustup Yükleme:**
 
@@ -90,15 +90,15 @@
 
 - Rust compalier’in kurulu olup olmadığını öğrenmek için yeni bir terminalde aşağıdaki komutu çalıştırdım. Bu sayede yüklemiş olduğumuz versiyonu da görebiliriz.
     
-    ![6.png](6.png)
+    ![6.png](images/6.png)
     
 - **Cargo**, **Rust’ın resmi paket yöneticisi** ve **proje yönetim aracıdır**. Rust projelerini oluşturmak, bağımlılıkları yönetmek, kodu derlemek ve çalıştırmak gibi işlemleri yapmamızı sağlar. Aşağıdaki kodla cargo paket yöneticisinin de versiyonunu da öğrenebiliriz.
     
-    ![7.png](7.png)
+    ![7.png](images/7.png)
     
 - Sonuç olarak;  **Rustup** yüklediğinizde aşağıdaki üç önemli bileşen **otomatik olarak** gelir.
 
-![8.png](8.png)
+![8.png](images/8.png)
 
 ---
 
@@ -110,11 +110,11 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 
 ---
 
-![9.png](9.png)
+![9.png](images/9.png)
 
 - Yukarıdaki Download butonu ile basit bir şekilde kurulum yaptıktan sonra extensions sekmesinden Rust-analyzer uzantısını yükleyin. Bu yüklemesi zorunlu bir uzantıdır ve **"rust-analyzer" uzantısı** sayesinde Visual Studio Code otomatik tamamlamayla hata denetleme desteğini sunar.
 
-![10.png](10.png)
+![10.png](images/10.png)
 
 ---
 
@@ -124,7 +124,7 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 
 - Cargo bağımlılıklarını daha iyi düzenlemenizi sağlar. `Cargo.toml` dosyasındaki **TOML sözdizimini (syntax) renklendirir ve hata denetimi yapar.**
 
-![11.png](11.png)
+![11.png](images/11.png)
 
 ### CodeLLDB :
 
@@ -132,7 +132,7 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 - **Breakpoints, değişken görüntüleme, adım adım çalıştırma gibi özellikler ekler.**
 - **LLDB tabanlıdır** ve Rust’a özel hata ayıklama desteği içerir. LLDB, **C, C++, Rust ve Swift gibi diller için geliştirilmiş** modern ve güçlü bir hata ayıklayıcıdır.  LLVM ekibi tarafından geliştirilmiştir ve Xcode, Android NDK gibi birçok sistemde kullanılır.
 
-![12.png](12.png)
+![12.png](images/12.png)
 
 ### Run Test Lens:
 
@@ -140,7 +140,7 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 - #[test] etiketli fonksiyonların yanında **"Run Test"** butonu gösterir.
 - **Unit test yazanlar için büyük kolaylık sağlar.**
 
-![13.png](13.png)
+![13.png](images/13.png)
 
 ---
 
@@ -181,7 +181,7 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 - Daha sonra bir VS Code içerisinde bir terminal açarak ilk komutu girelim.
 - Aşağıdaki kodda,  `cargo new` ile introduction_project adında yeni bir proje oluşturdum. Bu proje dosyasının içine de **`src/`**  klasörünü ve **`Cargo.toml`**  dosyasını otomatik olarak eklenir.
 
-![14.PNG](14.png)
+![14.PNG](images/14.PNG)
 
 `*Cargo.toml`**: P**roje ayarlarını ve bağımlılıklarını içeren bir yapılandırma dosyasıdır.*
 
@@ -192,7 +192,7 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 
  
 
-![15.PNG](15.png)
+![15.PNG](images/15.PNG)
 
 - **`target/` klasörü**, Cargo'nun **derlenmiş (compiled) dosyaları sakladığı dizindir**.
 - Derleme tamamlandıktan sonra **`target/`** dizininin içinde aşağıdaki alt klasörler oluşur:
@@ -209,7 +209,7 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 
 - Aşağıda, **`main.rs`** dosyası ile ilk kodumu yazdım (bu kod projeyi build ettiğimizde default olarak gelir). Terminalde **`cargo run` komutu ile birlikte çalıştırdım ve terminalde *“**Hello, World!”* **çıktısını aldım.**
 
-![16.PNG](16.png)
+![16.PNG](images/16.PNG)
 
  🥳 Harika bir şekilde birinci günümüzü tamamlayarak *Hello, World!*  çıktımızı aldık. 
 
