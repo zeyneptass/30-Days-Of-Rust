@@ -1,3 +1,6 @@
+
+# Rust Gün 2 :
+
 - Önceki derste Rust kurulumunu, cargo komutlarının işlevlerini ve cargo komutlarıyla bir Rust projesi oluşturmayı öğrendik. Daha sonra ilk projemizi oluşturduk ve programlamaya girişin ilk cümlesi olan “*Hello, World!“* çıktısını aldık.
 - Bugün ise Rust’ta değişken tanımlama, veri türleri, taşma kontrolü fonksiyonları, shadowing ve immutability kavramlarını inceleyeceğiz.
 
@@ -388,7 +391,7 @@ Rust’ta  veri türlerini iki gruba ayırabiliriz : Skaler (Scaler) türler ve 
         
         *Örnekler :*
         
-        ```
+        ```rust
         fn main() {
             let x: u8 = 255;
            
@@ -481,7 +484,7 @@ Rust’ta  veri türlerini iki gruba ayırabiliriz : Skaler (Scaler) türler ve 
         
         Eğer işlemin sonucu, türün **minimum değerinden küçük** olacaksa, sonuç **minimum değere** sabitlenir.
         
-        ```
+        ```rust
         fn main() {
             let a: i8 = -128; // i8 için minimum değer: -128
             let b: i8 = 1;
@@ -766,3 +769,4 @@ println!("İkinci eleman: {}", second); // İkinci eleman: 20
 ![5.png](images/5.png)
 
 ---
+<< [Day 1](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay1.md) | [Day 3](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay1.md) >>

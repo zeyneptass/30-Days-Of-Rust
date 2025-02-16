@@ -216,3 +216,4 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 
 ---
 
+[Day 2](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_2/RustDay2.md) >>
