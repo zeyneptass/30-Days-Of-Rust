@@ -60,13 +60,13 @@
 
 ![1.png](images/1.png)
 
-- Aşağıdaki Download Build Tools butonuna tıkladığımızda [**vs_BuildTools.exe](https://download.visualstudio.microsoft.com/download/pr/9e5046bb-ab15-4a45-9546-cbabed333482/e44275c738c3b146c1acbf6fadd059ff9567ce97113cc584886cdc6985bfe538/vs_BuildTools.exe) dosyasını indirecektir. Bu dosyaya tıklayarak Visual Studio Installer kurulumu yapalım.**
+- Aşağıdaki Download Build Tools butonuna tıkladığımızda [**vs_BuildTools.exe](https://download.visualstudio.microsoft.com/download/pr/9e5046bb-ab15-4a45-9546-cbabed333482/e44275c738c3b146c1acbf6fadd059ff9567ce97113cc584886cdc6985bfe538/vs_BuildTools.exe) dosyasını indirecektir. Bu dosyaya tıklayarak Visual Studio Installer kurulumu yapalım.
 
 ![2.png](images/2.png)
 
 - Kurlumdan sonra karşımıza çıkan ekranda C++ ile masaüstü geliştirme seçeneğini indirmemiz gerekiyor.
 
-💡 *Not:  Rust’ı Windows'ta **local olarak** kullanabilmek için **Microsoft C++ Build Tools**'u indirmemizin nedeni, Rust'ın **bazı bileşenlerinin C ve C++ bağımlılıkları** içermesidir. Özellikle **Rust’un Cargo paketi yöneticisiyle** bazı bağımlılıkları derlerken C derleyicisine ihtiyaç duyarız. Rust’ın kendi **Rustc derleyicisi** zaten bağımsızdır ve çoğu Rust kodunu çalıştırmak için ek bir derleyici gerektirmez ancak Rust’ın bazı parçaları **C dilinde yazılmış kodlara** sahiptir. Örneğin, `std` kütüphanesi kısmen C kodlarını içerir ve bunları derlemek için bir C derleyicisine ihtiyaç duyar. Ya da, **`cc` crate** veya **`bindgen` gibi araçlar**, arka planda bir C derleyicisi kullanır. Ek olarak, **Rust’ın resmi paket yöneticisi** `cargo` bazı paketleri indirirken, özellikle **native (yerel) kod içeren paketleri** derlerken **C/C++ derleyicisine** ihtiyaç duyabilir. Özetle, eğer **Rust’ı tamamen bağımsız (bare-metal) bir ortamda** çalıştırmıyorsanız, bazı Rust projelerinin **MSVC (Microsoft Visual C++) toolchain** ile derlenmesi gerekebilir.*
+💡 *Not:  Rust’ı Windows'ta **local olarak** kullanabilmek için **Microsoft C++ Build Tools**'u indirmemizin nedeni, Rust'ın **bazı bileşenlerinin C ve C++ bağımlılıkları** içermesidir. Özellikle **Rust’un Cargo paketi yöneticisiyle** bazı bağımlılıkları derlerken C derleyicisine ihtiyaç duyarız. Rust’ın kendi **Rustc derleyicisi** zaten bağımsızdır ve çoğu Rust kodunu çalıştırmak için ek bir derleyici gerektirmez ancak Rust’ın bazı parçaları **C dilinde yazılmış kodlara** sahiptir. Örneğin, `std` kütüphanesi kısmen C kodlarını içerir ve bunları derlemek için bir C derleyicisine ihtiyaç duyar. Ya da, **`cc` `crate`** veya **`bindgen` gibi araçlar**, arka planda bir C derleyicisi kullanır. Ek olarak, **Rust’ın resmi paket yöneticisi** `cargo` bazı paketleri indirirken, özellikle **native (yerel) kod içeren paketleri** derlerken **C/C++ derleyicisine** ihtiyaç duyabilir. Özetle, eğer **Rust’ı tamamen bağımsız (bare-metal) bir ortamda** çalıştırmıyorsanız, bazı Rust projelerinin **MSVC (Microsoft Visual C++) toolchain** ile derlenmesi gerekebilir.*
 
 ![3.png](images/3.png)
 
@@ -169,6 +169,7 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 - **`cargo build --release`**
     - Optimizasyonlarla derleme yapar (yavaş derleme, hızlı çalışan kod).
     - Çalıştırılabilir dosya `target/release/` klasörüne kaydedilir.
+    - Release modu, optimizasyonları etkinleştirir ve hata ayıklama bilgilerini çıkarır, bu da daha hızlı ve daha küçük bir çalıştırılabilir dosya üretir.
     - Son ürün dağıtılacaksa veya performans testi yapılacaksa kullanılır.
     
 
@@ -183,10 +184,10 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
 
 ![14.PNG](images/14.PNG)
 
-`*Cargo.toml`**: P**roje ayarlarını ve bağımlılıklarını içeren bir yapılandırma dosyasıdır.*
+`Cargo.toml`**: P**roje ayarlarını ve bağımlılıklarını içeren bir yapılandırma dosyasıdır.
 
-- **`src/`** klasörü altında**`main.rs`** dosyası otomatik olarak oluşur. main.rs dosyası, kodlarımızı yazdığımız ve  `cargo run` ile çalıştırdığımız dosyadır.
-- Projeyi derlemek için  `cargo build` komutunu çalıştırırız. İlk kez `cargo build` çalıştırıldığında **`target/`**klasörüyle `Cargo.lock` dosyası oluşturulur ve bağımlılıklar bu dosyaya kaydedilir.
+- **`src/`** klasörü altında `main.rs` dosyası otomatik olarak oluşur. main.rs dosyası, kodlarımızı yazdığımız ve  `cargo run` ile çalıştırdığımız dosyadır.
+- Projeyi derlemek için  `cargo build` komutunu çalıştırırız. İlk kez `cargo build` çalıştırıldığında **`target/`** klasörüyle `Cargo.lock` dosyası oluşturulur ve bağımlılıklar bu dosyaya kaydedilir.
 
 ***💡 Not: Eğer bağımlılık sürümlerini güncellemek isterseniz, `cargo update` komutunu kullanabilirsiniz.***
 
