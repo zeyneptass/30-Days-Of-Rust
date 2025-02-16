@@ -215,3 +215,4 @@ Ben Rust’ı kullanmak için Visual Studio Code editörünü indirdim. Siz dile
  🥳 Harika bir şekilde birinci günümüzü tamamlayarak *Hello, World!*  çıktımızı aldık. 
 
 ---
+
