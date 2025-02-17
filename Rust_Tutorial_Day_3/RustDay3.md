@@ -346,81 +346,84 @@ fn main() {
         ...
         ```
         
-    
-    ### 2. While Döngüsü :
-    
-    Genellikle bir döngü içinde bir koşulu değerlendirme kullanır. 
-    
-    Koşul doğru (`true`) olduğu sürece döngü çalışır. Koşul yanlış (`false`) olduğunda, döngü sona erer.
-    
-    Örnek:
-    
-    ```rust
-    fn main() {
-        let mut sayı = 5;
-    
-        while sayı > 0 {
-            println!("Sayı: {}", sayı);
-            sayı -= 1; // Her turda sayıyı azalt
-        }
-    
-        println!("Döngü bitti!"); // Döngü bittiğinde bu satır çalışır
+
+---
+
+### 2. While Döngüsü :
+
+Genellikle bir döngü içinde bir koşulu değerlendirme kullanır. 
+
+Koşul doğru (`true`) olduğu sürece döngü çalışır. Koşul yanlış (`false`) olduğunda, döngü sona erer.
+
+Örnek:
+
+```rust
+fn main() {
+    let mut sayı = 5;
+
+    while sayı > 0 {
+        println!("Sayı: {}", sayı);
+        sayı -= 1; // Her turda sayıyı azalt
     }
-    ```
-    
-    ***💡 Not :**  Yukarıdaki fonksiyon; sayı değişkenini 5 olarak tanımlar ve sayı 0'dan büyük olduğu sürece döngüyü çalıştırır. Her turda sayıyı azaltır ve sayıyı ekrana yazdırır. Döngü bittiğinde "Döngü bitti!" yazısını ekrana yazdırır.*
-    
-    Çıktı :
-    
-    ```
-    Sayı: 5
-    Sayı: 4
-    Sayı: 3
-    Sayı: 2
-    Sayı: 1
-    Döngü bitti!
-    ```
-    
-    **Bir Koleksiyonda Döngü Oluşturma :** 
-    
-    `while` döngüsünü, bir koleksiyonun (örneğin bir dizinin) elemanları üzerinde gezinmek için de kullanabilirsiniz. Aşağıdaki örnekte, bir dizinin her elemanı yazdırılıyor:
-    
-    ```rust
-    fn main() {
-        let a = [10, 20, 30, 40, 50];
-        let mut index = 0;
-    
-        while index < 5 {
-            println!("the value is: {}", a[index]); 
-    
-            index += 1;
-        }
+
+    println!("Döngü bitti!"); // Döngü bittiğinde bu satır çalışır
+}
+```
+
+***💡 Not :**  Yukarıdaki fonksiyon; sayı değişkenini 5 olarak tanımlar ve sayı 0'dan büyük olduğu sürece döngüyü çalıştırır. Her turda sayıyı azaltır ve sayıyı ekrana yazdırır. Döngü bittiğinde "Döngü bitti!" yazısını ekrana yazdırır.*
+
+Çıktı :
+
+```
+Sayı: 5
+Sayı: 4
+Sayı: 3
+Sayı: 2
+Sayı: 1
+Döngü bitti!
+```
+
+**Bir Koleksiyonda Döngü Oluşturma :** 
+
+`while` döngüsünü, bir koleksiyonun (örneğin bir dizinin) elemanları üzerinde gezinmek için de kullanabilirsiniz. Aşağıdaki örnekte, bir dizinin her elemanı yazdırılıyor:
+
+```rust
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+    let mut index = 0;
+
+    while index < 5 {
+        println!("the value is: {}", a[index]); 
+
+        index += 1;
     }
-    ```
+}
+```
+
+*Yukarıdaki fonksiyon; a dizisinin elemanlarını ekrana yazdırmak için bir döngü kullanmaktadır. index değişkeni, dizinin elemanlarına erişmek için kullanılmaktadır. index değişkeni, 0'dan başlayarak 5'e kadar arttırılmaktadır. Bu durumda döngü, dizinin tüm elemanlarını ekrana yazdıracaktır ve index 5 olduğunda döngü sona erecektir.*
+
+Çıktı : 
+
+```
+the value is: 10
+the value is: 20
+the value is: 30
+the value is: 40
+the value is: 50
+```
+
+**while Döngüsünün Dezavantajları :**
+
+1. **Hata Riski:**
+    - Eğer dizinin boyutunu değiştirirseniz (örneğin 5 elemanlı bir diziyi 4 elemanlı yaparsanız) ve `while index < 5` koşulunu güncellemezseniz, program **panikleyebilir** (hata verir).
+    - Bu tür hatalar, özellikle büyük projelerde tespit edilmesi zor olabilir.
+2. **Performans:**
+    - `while` döngüsü, her turda dizinin sınırlarını kontrol etmek için ekstra bir koşul gerektirir. Bu, performansı olumsuz etkileyebilir.
     
-    *Yukarıdaki fonksiyon; a dizisinin elemanlarını ekrana yazdırmak için bir döngü kullanmaktadır. index değişkeni, dizinin elemanlarına erişmek için kullanılmaktadır. index değişkeni, 0'dan başlayarak 5'e kadar arttırılmaktadır. Bu durumda döngü, dizinin tüm elemanlarını ekrana yazdıracaktır ve index 5 olduğunda döngü sona erecektir.*
+    For döngü kullanarak koleksiyondaki her öğe iterasyon yapmak hata riskini azaltıp performansı arttırır. 
     
-    Çıktı : 
-    
-    ```
-    the value is: 10
-    the value is: 20
-    the value is: 30
-    the value is: 40
-    the value is: 50
-    ```
-    
-    **while Döngüsünün Dezavantajları :**
-    
-    1. **Hata Riski:**
-        - Eğer dizinin boyutunu değiştirirseniz (örneğin 5 elemanlı bir diziyi 4 elemanlı yaparsanız) ve `while index < 5` koşulunu güncellemezseniz, program **panikleyebilir** (hata verir).
-        - Bu tür hatalar, özellikle büyük projelerde tespit edilmesi zor olabilir.
-    2. **Performans:**
-        - `while` döngüsü, her turda dizinin sınırlarını kontrol etmek için ekstra bir koşul gerektirir. Bu, performansı olumsuz etkileyebilir.
-        
-        For döngü kullanarak koleksiyondaki her öğe iterasyon yapmak hata riskini azaltıp performansı arttırır. 
-        
-    
+
+---
 
 ### 3. For Döngüsü :
 
@@ -476,12 +479,14 @@ fn main() {
 
 Çıktı : 
 
-```rust
+```
 3!
 2!
 1!
 KALKIŞ!
 ```
+
+---
 
 ---
 << [Day 1](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay2.md) | [Day 3](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_3/RustDay3.md) >>
