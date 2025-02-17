@@ -3,7 +3,7 @@
 
 
 - Önceki dersimizde temel syntax ve değişkenlere değindik. Mutable ve immutable kavramlarıyla birlikte shadowing yöntemlerinden de bahsettk.
-- Bugün ise Rust’taki koşul ifadelerinde ve döngülere değineceğim.
+- Bugün ise Rust’taki koşul ifadelerine ve döngülere değineceğim.
 
 ---
 
@@ -234,7 +234,7 @@ fn main() {
     
     ---
     
-    ## Birden Fazla Döngü Arasındaki Belirsizliği Gidermek İçin Döngü Etiketleri
+    ### Birden Fazla Döngü Arasındaki Belirsizliği Gidermek İçin Döngü Etiketleri
     
     - Eğer iç içe döngüleriniz varsa, `break` ve `continue` ifadeleri varsayılan olarak **en içteki döngüyü** etkiler.
     - Ancak, bir döngüye **etiket** ekleyerek, `break` veya `continue` ifadelerinin bu etiketli döngüyü hedef almasını sağlayabilirsiniz.
@@ -347,7 +347,7 @@ fn main() {
         ```
         
     
-    ### **1. While Döngüsü :**
+    ### 2. While Döngüsü :
     
     Genellikle bir döngü içinde bir koşulu değerlendirme kullanır. 
     
@@ -484,3 +484,4 @@ KALKIŞ!
 ```
 
 ---
+<< [Day 1](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay2.md) | [Day 3](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_3/RustDay3.md) >>

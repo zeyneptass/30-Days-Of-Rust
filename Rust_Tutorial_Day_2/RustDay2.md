@@ -769,4 +769,4 @@ println!("İkinci eleman: {}", second); // İkinci eleman: 20
 ![5.png](images/5.png)
 
 ---
-<< [Day 1](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay1.md) | [Day 3](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay1.md) >>
+<< [Day 1](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay1.md) | [Day 3](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_3/RustDay3.md) >>
