@@ -1,9 +1,72 @@
 
 # Rust Gün 3 :
 
-
 - Önceki dersimizde temel syntax ve değişkenlere değindik. Mutable ve immutable kavramlarıyla birlikte shadowing yöntemlerinden de bahsettk.
-- Bugün ise Rust’taki koşul ifadelerine ve döngülere değineceğim.
+- Bugün ise Rust’taki aritmetik operatörler, koşul ifadelerine ve döngülere değineceğim.
+
+---
+
+# Aritmetik Operatörler
+
+Rust programlama dilinde, temel aritmetik işlemler için kullanılan operatörler diğer birçok programlama diline benzer. İşte Rust'ta kullanılan aritmetik operatörler:
+
+| Operatör | Açıklama |
+| --- | --- |
+| `+` | Toplama (Addition) |
+| `-` | Çıkarma (Subtraction) |
+| `*` | Çarpma (Multiplication) |
+| `/` | Bölme (Division) |
+| `%` | Modülüs (Modulus - Kalan Bulma) |
+| `+=` | Artırma |
+| `-=`  | Azaltma |
+
+Örnek : 
+
+```rust
+fn main() {
+    let a = 10;
+    let b = 3;
+
+    println!("Toplama: {}", a + b);   //  Toplama: 13
+    println!("Çıkarma: {}", a - b);   // Çıkarma: 7
+    println!("Çarpma: {}", a * b);   // Çarpma: 30
+    println!("Bölme: {}", a / b);   // Bölme: 3 (Integer division)
+    println!("Modülüs: {}", a % b); // Modülüs: 1
+}
+```
+
+***💡 Not :*** *Rust'ta C dilindeki gibi `++` veya `--` operatörleri yoktur. Bunun yerine, değişkeni doğrudan artırır veya azaltırız.*
+
+```rust
+    let mut sayi = 5;
+    sayi += 1; // sayi = 6
+    sayi -= 1; // sayi = 5
+```
+
+# Kısayol (Compound Assignment) Operatörleri
+
+Rust, değişkenlerin değerini güncellemek için şu kısayol operatörlerini de destekler:
+
+| Operatör | Açıklama | Uzun Kullanımı | Kısayol Kullanımı |
+| --- | --- | --- | --- |
+| `+=` | Topla ve ata | `x = x + 5;` | `x += 5;` |
+| `-=` | Çıkar ve ata | `x = x - 3;` | `x -= 3;` |
+| `*=` | Çarp ve ata | `x = x * 2;` | `x *= 2;` |
+| `/=` | Böl ve ata | `x = x / 4;` | `x /= 4;` |
+| `%=` | Modülüs ve ata | `x = x % 3;` | `x %= 3;` |
+- Kod daha kısa ve okunabilir hale gelir.
+- Özellikle bir değişkenin değerini güncellerken kullanışlıdır.
+
+Örnek:
+
+```rust
+    let mut x = 10;
+
+    x += 5; // x = x + 5
+    println!("x += 5 -> {}", x); // 15
+    x -= 3; // x = x - 3
+    println!("x -= 3 -> {}", x); // 12
+```
 
 ---
 
@@ -489,4 +552,4 @@ KALKIŞ!
 ---
 
 ---
-<< [Day 1](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_1/RustDay2.md) | [Day 3](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_3/RustDay3.md) >>
+<< [Day 2](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_2/RustDay2.md) | [Day 4](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_3/RustDay4.md) >>
