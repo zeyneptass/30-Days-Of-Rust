@@ -190,7 +190,7 @@ Rust’ta  veri türlerini iki gruba ayırabiliriz : Skaler (Scaler) türler ve 
     println!("a: {}", a); // a: 255
     ```
     
-    ***💡** Not :*   *Evet, Rust'ta **işaretsiz (`u`) türlerin değer aralığı**, aynı bit genişliğine sahip **işaretli (`i`) türlerin değer aralığının yaklaşık iki katıdır**. Bunun nedeni, işaretsiz türlerin sadece pozitif değerleri temsil etmesi, işaretli türlerin ise hem negatif hem de pozitif değerleri temsil etmesidir.*
+    ***💡** Not :*   *Rust'ta **işaretsiz (`u`) türlerin değer aralığı**, aynı bit genişliğine sahip **işaretli (`i`) türlerin değer aralığının yaklaşık iki katıdır**. Bunun nedeni, işaretsiz türlerin sadece pozitif değerleri temsil etmesi, işaretli türlerin ise hem negatif hem de pozitif değerleri temsil etmesidir.*
     
     **i16 (16-bit işaretli tam sayı) :** 
     
@@ -307,7 +307,7 @@ Rust’ta  veri türlerini iki gruba ayırabiliriz : Skaler (Scaler) türler ve 
     Örneğin:
     
     - **`u8`** türü, `0` ile `255` arasında değerler alabilir. Eğer `255` değerine sahip bir `u8` değişkenine `1` eklerseniz, taşma meydana gelir.
-    - **`i8`** türü, `128` ile `127` arasında değerler alabilir. Eğer `127` değerine sahip bir `i8` değişkenine `1` eklerseniz, taşma meydana gelir.
+    - **`i8`** türü, `-128` ile `127` arasında değerler alabilir. Eğer `127` değerine sahip bir `i8` değişkenine `1` eklerseniz, taşma meydana gelir.
     
     **Rust'ta Tamsayı Taşma Durumları :** 
     
@@ -677,6 +677,16 @@ fn main() {
     println!("Blok'un dönüş değeri: {:?}", result); // Blok'un dönüş değeri: ()
 }
 ```
+💡 Not : x + y; ifadesinin sonunda noktalı virgül (;) olduğu için blok ()` döndürür. Eğer x + y ifadesinin sonunda noktalı virgül olmasaydı, blok i32 (15) döndürürdü.
+
+### *İfade (Expression) ve Deyim (Statement) Arasındaki Fark:*
+
+Rust'ta bir **ifade** (expression) ve bir **deyim** (statement) arasında temel bir fark vardır. Noktalı virgül (`;`), bir ifadeyi **deyime çevirir** ve deyimler değer döndürmez.
+
+- **İfade (Expression):** Bir değer üretir ve döndürür.
+- **Deyim (Statement):** Bir işlem gerçekleştirir ama değer döndürmez, yani `()` döndürür.
+
+Rust'ta **bir blok içindeki son ifade döndürülür**. Ancak **o ifadeye noktalı virgül (`;`) eklenirse, bu ifade bir deyime dönüşür ve `()` döndürür**.
 
 - Unit tuple, desen eşleme (pattern matching) sırasında da kullanılabilir.
 - Aşağıdaki örnekte **unit type** (`()`), `check_value` fonksiyonunun dönüş türü olarak kullanılmıştır.  Bu, fonksiyonun herhangi bir değer döndürmediğini gösterir.

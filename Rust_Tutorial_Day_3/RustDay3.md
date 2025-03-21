@@ -145,7 +145,7 @@ fn main() {
         
             println!("number değişkeninin değeri: {number}"); // number değişkeninin değeri: 5
         }
-        // Yukarıdaki kodda, if ifadesi bir ifade olduğu için, if ifadesinin sonucunu bir değişkene atayabiliriz.
+        // Yukarıdaki kodda, if bir ifade olduğu için, sonucunu bir değişkene atayabiliriz.
         ```
         
         - *Bu kod çalıştırıldığında, `condition` değişkeni `true` olduğu için `number` değişkeni 5 değerini alacak ve çıktı şu olacaktır: “number değişkeninin değeri: 5"*
@@ -483,7 +483,7 @@ the value is: 50
 2. **Performans:**
     - `while` döngüsü, her turda dizinin sınırlarını kontrol etmek için ekstra bir koşul gerektirir. Bu, performansı olumsuz etkileyebilir.
     
-    For döngü kullanarak koleksiyondaki her öğe iterasyon yapmak hata riskini azaltıp performansı arttırır. 
+    For döngüsü kullanılarak koleksiyondaki her öğe üzerinde iterasyon yapmak hata riskini azaltıp performansı arttırır.  
     
 
 ---
@@ -538,7 +538,7 @@ fn main() {
 
 - `(1..4)` aralığı, 1'den 3'e kadar olan sayıları üretir.
 - `.rev()` metodu, bu aralığı tersine çevirir (yani 3, 2, 1 şeklinde).
-- Her sayı ekrana yazdırılır ve sonunda "LIFTOFF!!!" mesajı yazdırılır.
+- Her sayı ekrana yazdırılır ve sonunda "KALKIŞ!" mesajı yazdırılır.
 
 Çıktı : 
 
