@@ -533,7 +533,7 @@ Rust’ta  veri türlerini iki gruba ayırabiliriz : Skaler (Scaler) türler ve 
     
     **f64 (64-bit ondalıklı sayı) :** 
     
-    - Bellekte 32 bit (4 byte) yer kaplar.
+    - Bellekte 64 bit (8 byte) yer kaplar.
     - Daha fazla bellek kullanır, ancak daha yüksek hassasiyete sahiptir.
     - Çift hassasiyetli (double-precision) kayan noktalı sayı.
     
@@ -680,6 +680,34 @@ fn main() {
 💡 Not : x + y; ifadesinin sonunda noktalı virgül (;) olduğu için blok ()` döndürür. Eğer x + y ifadesinin sonunda noktalı virgül olmasaydı, blok i32 (15) döndürürdü.
 
 ### *İfade (Expression) ve Deyim (Statement) Arasındaki Fark:*
+
+Rust **ifade temelli bir dildir**. Bu, birçok yapının bir değer döndürmesi ve başka ifadelerde kullanılabilmesi anlamına gelir.
+
+**1. Deyimler (Statements) nedir?**
+
+- **Bir işlemi gerçekleştiren**, ancak **herhangi bir değer döndürmeyen** yapılardır.
+- Örneğin değişken tanımlamaları bir deyimdir:
+    
+    ```rust
+    let y = 6;
+    ```
+    
+- `let y = 6;` ifadesi bir değer döndürmediği için başka bir değişkene atanamaz:
+    
+    ```rust
+    let x = (let y = 6); // ❌ HATA verir!
+    ```
+    
+
+**2. İfadeler (Expressions) nedir?**
+
+- **Bir değer döndüren** yapılardır.
+- Rust'taki hemen hemen her şey bir ifadedir: matematik işlemleri, fonksiyon çağrıları, bloklar, vs.
+    
+    ```rust
+    5 + 6 // ➝ 11 değerini döndürür, bu bir ifadedir
+    ```
+    
 
 Rust'ta bir **ifade** (expression) ve bir **deyim** (statement) arasında temel bir fark vardır. Noktalı virgül (`;`), bir ifadeyi **deyime çevirir** ve deyimler değer döndürmez.
 
