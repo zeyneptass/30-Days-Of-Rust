@@ -23,7 +23,7 @@
 
 ```rust
 fn main() {
-		println!("Merhaba, Rust!");
+	println!("Merhaba, Rust!");
 }
 ```
 
@@ -78,7 +78,8 @@ fn main() {
 
 	// Toplama işlemi yapan fonksiyon
 	fn add(x: i32, y: i32) {
-	println!("Toplam: {}", x + y);
+	    println!("Toplam: {}", x + y);
+    }
 }
 ```
 
@@ -156,7 +157,7 @@ Rust'ta parametreler herhangi bir türde olabilir:
 
 ```rust
 fn carp(a: i32, b: i32) -> i32 {
-	a * b // return olmadan da döner (son satır; noktalı virgül yok!)
+    a * b // return olmadan da döner (son satır; noktalı virgül yok!)
 }
 ```
 
@@ -164,7 +165,7 @@ fn carp(a: i32, b: i32) -> i32 {
 
 ```rust
 fn gecersiz_donus(a: i32, b: i32) -> i32 {
-	a * b; // yanlış! çünkü ; ile ifade sonuç üretmez
+   a * b; // yanlış! çünkü ; ile ifade sonuç üretmez
 }
 ```
 
@@ -172,7 +173,7 @@ fn gecersiz_donus(a: i32, b: i32) -> i32 {
 
 ```rust
 fn gecerli_donus(a: i32, b: i32) -> i32 {
-	return a * b;  // Return kullanıldığı için sonuç üretir
+   return a * b;  // Return kullanıldığı için sonuç üretir
 }
 ```
 
@@ -224,12 +225,17 @@ Bu örnekte; `x` değişkeni `main` fonksiyonunun tamamında geçerlidir.`y` de�
 
 ```rust
 fn main() {
-		let sonuc = {
-		let a = 3;
-		a + 2 // Bu satırın sonunda ; yok => bu değeri döndürür
+	let sonuc = {
+	let a = 3;
+	a + 2 // Bu satırın sonunda ; yok => bu değeri döndürür
 	};
 	println!("Sonuç: {}", sonuc); // çıktı: Sonuç: 5
 }
 ```
 
 - *Yukarıdaki örnekte; iç blok `a + 2` ifadesini döndürür ve bu `sonuc` değişkenine atanır.*
+
+
+
+---
+<< [Day 3](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_3/RustDay3.md) | [Day 5](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_5/RustDay4.md) >>
