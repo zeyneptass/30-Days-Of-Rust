@@ -62,8 +62,8 @@
         
         ```rust
         fn sum(a: i32, b: i32) -> i32 { // a ve b stack'te
-        	let result = a + b; // result stack'te
-        	result
+           let result = a + b; // result stack'te
+           result
         }
         ```
         
@@ -74,8 +74,8 @@
         
         ```rust
         struct Point {
-        	x: i32,
-        	y: i32,
+           x: i32,
+           y: i32,
         }
         let origin = Point { x: 0, y: 0 }; // Stack'te
         ```
@@ -84,7 +84,7 @@
         
         ```rust
         fn print_number(num: i32) { // num stack'te
-        println!("{}", num);
+           println!("{}", num);
         }
         ```
         
@@ -97,8 +97,8 @@
         
         ```rust
         {
-        	let x = 5; // Stack'e push
-        	println!("{}", x);
+           let x = 5; // Stack'e push
+           println!("{}", x);
         } // x burada otomatik silinir (pop)
         ```
         
@@ -108,11 +108,11 @@
         
         ```rust
         fn foo() {
-        	let y = 30; // Stack'e push (foo'nun stack frame'ine)
+           let y = 30; // Stack'e push (foo'nun stack frame'ine)
         } // y burada silinir (foo'nun stack frame'i yok edilir)
         
         fn main() {
-        	foo();
+           foo();
         } // main'in stack frame'i de sona erer
         ```
         
@@ -164,8 +164,8 @@
         
         ```rust
         fn main() {
-        	// Heap'te String oluşturma
-        	let s = String::from("Merhaba");
+           // Heap'te String oluşturma
+           let s = String::from("Merhaba");
         }
         ```
         
@@ -205,10 +205,10 @@ Rust'ta metinlerle çalışmak için iki ana tür vardır:
     ```rust
     // Fonksiyon parametresi olarak
     fn yazdir(mesaj: &str) {
-        println!("{}", mesaj);
+       println!("{}", mesaj);
     }
     
-    yazdir("Bu bir string literal");  // Çıktı: Bu bir string literal
+       yazdir("Bu bir string literal");  // Çıktı: Bu bir string literal
     ```
     
 2. String  Türü : 
@@ -317,9 +317,9 @@ Rust'ta metinlerle çalışmak için iki ana tür vardır:
         
         ```rust
         let name = "Ahmet"; 
-            let age = 30; 
-            let s = format!("{} {} yaşında", name, age); // format! makrosu ile string oluşturma
-            println!("{}", s); // Çıktı: Ahmet 30 yaşında
+        let age = 30; 
+        let s = format!("{} {} yaşında", name, age); // format! makrosu ile string oluşturma
+        println!("{}", s); // Çıktı: Ahmet 30 yaşında
         ```
         
     
@@ -438,8 +438,8 @@ Rust'ta String işlemlerini verimli bir şekilde yönetmek için aşağıdaki y�
     
     ```rust
     let mut s = String::new();
-    	for i in 0..100 {
-    		s.push_str(&i.to_string()); // Her iterasyonda reallocation riski
+       for i in 0..100 {
+       s.push_str(&i.to_string()); // Her iterasyonda reallocation riski
     }
     ```
     
@@ -448,8 +448,8 @@ Rust'ta String işlemlerini verimli bir şekilde yönetmek için aşağıdaki y�
     
     ```rust
     let mut s = String::with_capacity(100 * 3); // 100 sayı * ortalama 3 karakter
-    	for i in 0..100 {
-    		s.push_str(&i.to_string());
+       for i in 0..100 {
+       s.push_str(&i.to_string());
     }
     ```
     
@@ -468,3 +468,5 @@ Rust'ta String işlemlerini verimli bir şekilde yönetmek için aşağıdaki y�
     
 
 ---
+
+<< [Day 4](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust__Tutorial_Day_4/RustDay4.md) | [Day 6](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_6/RustDay6.md) >>
