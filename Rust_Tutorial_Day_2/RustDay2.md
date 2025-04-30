@@ -2,7 +2,7 @@
 # Rust Gün 2 :
 
 - Önceki derste Rust kurulumunu, cargo komutlarının işlevlerini ve cargo komutlarıyla bir Rust projesi oluşturmayı öğrendik. Daha sonra ilk projemizi oluşturduk ve programlamaya girişin ilk cümlesi olan “*Hello, World!“* çıktısını aldık.
-- Bugün ise Rust’ta değişken tanımlama, veri türleri, taşma kontrolü fonksiyonları, shadowing ve immutability kavramlarını inceleyeceğiz.
+- Bugün ise Rust’ta değişken tanımlama, veri türleri, taşma kontrolü fonksiyonları, shadowing, immutability ve kavramlarını inceleyip ifade (Expression) ve deyim (Statement) arasındaki farka değineceğiz.
 
 ---
 
@@ -62,7 +62,7 @@ println!("y'nin yeni değeri: {}", y); // y'nin yeni değeri: 20
 - Özetle; sabitler (const), derleme zamanında bilinen, değişmeyen değerler için kullanılır. Değişkenler (let) ise, değerleri çalışma zamanında hesaplanabilen ve değişebilen değerler için kullanılır. Sabitler, sabit ifadelerle tanımlanırken, değişkenler çalışma zamanında hesaplanan değerlere atanabilir.
 
 ```rust
-**const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 // Derleyici, derleme zamanında sınırlı bir işlem kümesini değerlendirebilir; bu da bu değeri 10.800 değerine ayarlamak yerine, anlaşılması ve doğrulanması daha kolay bir şekilde yazmayı seçmemize olanak tanır.**
 ```
 
@@ -133,7 +133,7 @@ fn main() {
 - Türlerin açıkça belirtilmesi veya çıkarılması, kodun daha okunabilir olmasını sağlar. Bu ekip çalışmalarında büyük avantaj sağlar.
 - Derleyici, tür bilgilerini kullanarak daha etkili optimizasyonlar yapabilir. Bu, programın daha hızlı çalışmasını sağlar.
 
-***💡** Not : Statisk tür sistemi, bellek güvenliği ve veri bütünlüğü sağlar. Rust programlama dilinde C ve C++ gibi dillerde olduğu gibi null pointer hataları mümkün değildir. Null pointer hataları, bir programın geçersiz veya boş (`null`) bir bellek adresine erişmeye çalışması durumunda ortaya çıkar. Bu tür hatalar, çalışma zamanında (runtime) ortaya çıkar ve genellikle programın çökmesine neden olur.* 
+***💡** Not : Statik tür sistemi, bellek güvenliği ve veri bütünlüğü sağlar. Rust programlama dilinde C ve C++ gibi dillerde olduğu gibi null pointer hataları mümkün değildir. Null pointer hataları, bir programın geçersiz veya boş (`null`) bir bellek adresine erişmeye çalışması durumunda ortaya çıkar. Bu tür hatalar, çalışma zamanında (runtime) ortaya çıkar ve genellikle programın çökmesine neden olur.* 
 
 ### **Rust'ta Tür Belirtme ve Tür Çıkarımı :**
 
@@ -744,14 +744,15 @@ fn main() {
 - Diziler, köşeli parantez `[]` içinde virgülle ayrılmış değerlerle tanımlanır. Dizinin türü ve boyutu açıkça belirtilebilir.
 - Diziler, bellekte ardışık (contiguous) bir şekilde saklanır. Bu, dizilere erişimin hızlı olmasını sağlar.
 
-```
+```rust
 fn main() {
     let array: [i32; 5] = [1, 2, 3, 4, 5]; // Tür ve boyut açıkça belirtildi
-    println!("Array: {:?}", array); // Array: [1, 2, 3, 4, 5]
+    println!("{:?}", array);      // Tek satırda yazdırır.  [1, 2, 3, 4, 5] 
+    println!("{:#?}", array);     // Alt alta yazdırır. Daha okunabilir bir çıktı sağlar.
 }
 ```
 
-***💡** Not :*  `*:?` ifadesinin, **debug formatlama** için kullanıldığına değinmiştim aynı şekilde dziler de display* trait'ini otomatik olarak uygulamaz. Bu nedenle, `{}` kullanarak bir diziyi doğrudan yazdırmak mümkün değildir. Aşağıdaki gibi hata verir:
+***💡** Not :*  `*:?` ifadesinin, **debug formatlama** için kullanıldığına değinmiştim aynı şekilde diziler de **display trait**'ini otomatik olarak uygulamaz. Bu nedenle, `{}` kullanarak bir diziyi doğrudan yazdırmak mümkün değildir. Aşağıdakii gibi hata verir:
 
 ```rust
 println!("Array: {}", array); // Hata! [i32; 5] türü Display trait'ini uygulamıyor.
@@ -761,6 +762,7 @@ println!("Array: {}", array); // Hata! [i32; 5] türü Display trait'ini uygulam
 
 - Eleman sayısının derleme zamanında bilindiği durumlar (örn., haftanın günleri, bir matrisin boyutu).
 - Verilerin stack’te saklanması gerektiği durumlar (vektörler heap'te saklanır).
+- (Vec<T>), dinamik boyutlu dizilerdir ve heap bellek bölgesinde saklanır. Diziler ([T; N]) ise sabit uzunlukludur ve stack'te tutulur.
 - Performans kritik uygulamalarda (dizilere erişim vektörlere göre biraz daha hızlı olabilir).
 
 ```rust

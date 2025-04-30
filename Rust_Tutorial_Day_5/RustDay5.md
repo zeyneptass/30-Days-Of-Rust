@@ -55,7 +55,8 @@
         
         ```rust
         let point: (i32, f64) = (10, 2.7); // Stack'te
-        ```
+        ```        
+        ***💡 Not: Tuple'ın kendisi (içindeki elemanların referansları/metadata) stack'te tutulur ama tuple içinde heap'te veri tutan türler varsa (örn., String, Vec<T>, Box<T>), bu veriler heap'te saklanır:***
         
     - Fonksiyon çağrıları ve fonksiyon içindeki yerel değişkenler (boyutu bilinen türler: i32, bool, f64, referanslar, sabit uzunlukta array'ler vb.) işaretçiler:
     - Her fonksiyon çağrıldığında bir **stack frame** oluşturulur. Yerel değişkenler, parametreler ve dönüş adresleri burada saklanır.
@@ -67,7 +68,7 @@
         }
         ```
         
-    - Özyineleme (Recursion) sırasında her çağrı için yeni bir stack frame oluşur.
+    - Özyineleme (Recursion) sırasında her çağrı için yeni bir stack frame oluşur. Özyineleme, bir fonksiyonun kendisini doğrudan veya dolaylı olarak çağırmasıdır. 
     - Düşük gecikmeli işlemler için idealdir (matematiksel hesaplamalar gibi).
     - Embedded (Gömülü) Sistemlerde stack, tahmin edilebilir bellek kullanımı sağlar.
     - Tüm alanları stack’te saklanabilen struct’lar:
@@ -136,11 +137,19 @@
         
         **Heap’te Alan Tahsis Etme (Allocation) :**
         
-        - Memory allacator (bellek tahsis edici); yığında yeterince büyük boş bir nokta bulur, kullanımda olarak işaretler ve o konumun adresi olan bir pointer (işaretçi) döndürür.
-        - Pointer sabit bir boyutta olduğundan yığında saklayabiliriz ancak gerçek verileri istediğimizde pointer’ı takip etmeliyiz.
-        - Bu kavramı somutlaştırmak için bir restoranda oturduğunuzu düşünün. İçeri girdiğinizde, grubunuzdaki kişi sayısını belirtirsiniz ve sunucu herkese uyan boş bir masa bulur ve sizi oraya götürür. Grubunuzdaki biri geç gelirse, sizi bulmak için nerede oturduğunuzu sorabilir.
-        - Heap’te pushing işlemi, yığında tahsis etmekten daha hızlıdır çünkü tahsis eden kişi yeni verileri depolamak için bir yer aramak zorunda kalmaz. Yeni verileri yığının en üstüne konumlandırır.
-        - Yani heap’te alan tahsis etme işlemi heap’te pushing işleminden daha fazla iş gerektir.
+        - Heap'te yeterince büyük boş bir blok bulur, bu alanı "kullanımda" olarak işaretler ve o konumun adresini içeren bir pointer (işaretçi) döndürür.
+        - Pointer'ın boyutu sabit olduğu (örneğin, 64-bit sistemde 8 byte) için onu stack üzerinde saklayabiliriz. Ancak gerçek veriye ulaşmak için pointer'ı heap'teki konumu takip etmeliyiz.
+        - Örneğin aşağıdaki kodda, x değişkeni stack'te bir işaretçi (pointer) olarak saklanır. Veri ise heap'te saklanır.
+
+        *Örnek :* 
+        
+        ```rust
+        let x = Box::new(42); // Pointer (x) stack'te, veri (42) heap'te.
+        ```
+
+        - Bu kavramı somutlaştırmak için bir restoranda oturduğunuzu düşünün. Heap, bir restorandaki masalara benzer: Girişte kaç kişi olduğunuzu söylersiniz, sunucu (memory allocator) uygun bir boş masa (heap bloğu) bulur ve size adresini (pointer) verir. Geç gelen biri, sizi bulmak için bu adresi sorar. Stack ise restorandaki "sipariş defteri" gibidir: Sabit boyutlu ve hızlı erişimlidir (örneğin, masa numarası stack'te, masa içindeki yemekler heap'te).
+        - Heap’te alan tahsis etmek, stack’te pushing işleminden daha yavaştır çünkü uygun boyutta boş bir blok aranır ve fragmentasyon (parçalanma) kontrolü gerekir.
+        - Yani heap’te alan tahsis etmek, stack’te pushing işleminden daha fazla iş gerektirir..
         
         **Heap’te Veriye Erişim :**
         
@@ -193,13 +202,17 @@
 Rust'ta metinlerle çalışmak için iki ana tür vardır:
 
 1. String Literal **`&str`** (Dize Sabitleri) :
-    - Bunlar programın koduna doğrudan yazılır, boyutları sabittir ve değiştirilemezler.
-    - Bellekte verimli bir şekilde saklanırlar.
+    - Bunlar programın koduna doğrudan yazılır, boyutları sabittir ve değiştirilemezler (immutable).
+    - String literal'ler (&str) derleme zamanında binary'nin içine gömülürek (read-only memory) static data bölümünde saklanır.
+    - Bu bellek alanı, programın çalışma süresi boyunca (runtime) değişmez ve hayatı (static lifetime) programın başından sonuna kadardır.
+        **Bellek Özellikleri :** 
+        - &str'nin kendisi (pointer + length) stack'te tutulur, ancak işaret ettiği veri binary'nin statik bölgesindedir.
+        - Heap'te saklanmaz.
     
     *Örnek:*
     
     ```rust
-       let s = "merhaba"; *// &str türü*
+       let s = "merhaba"; *// &str türü binary'de gömülüdür.
     ```
     
     ```rust
@@ -286,7 +299,7 @@ Rust'ta metinlerle çalışmak için iki ana tür vardır:
         ```rust
         let mut s = String::with_capacity(50); // 50 byte kapasiteli String
         s.push_str("Bu daha verimli bir yöntem");
-        println!("Kapasite: {}, Uzunluk: {}", s.capacity(), s.len());
+        println!("Kapasite: {}, Uzunluk: {}", s.capacity(), s.len()); //Kapasite: 50, Uzunluk: 27
         ```
         
     
@@ -329,7 +342,7 @@ Rust'ta metinlerle çalışmak için iki ana tür vardır:
     
     - String'in sonuna başka bir metin ekler
     - Parametre olarak **`&str`** alır
-    - O(1) zaman karmaşıklığına sahiptir (amortized)
+    - O(1) zaman karmaşıklığına sahiptir (amortized). Yani, bir işlemin "ortalama" (uzun vadeli) zaman karmaşıklığı sabittir. Tek seferde O(1) olmayabilir, ancak bir dizi işlemde ortalama maliyet O(1) olarak kabul edilir. Kısace burada yeniden bellek tahsisi gibi pahalı bir işlem, birçok ucuz işlemle dengelenir.
     
     ```rust
     let mut s = String::from("Merhaba");
@@ -359,22 +372,34 @@ Rust'ta metinlerle çalışmak için iki ana tür vardır:
     
     **3. `+` Operatörü ile Birleştirme :** 
     
-    - İki String'i veya String ile &str'yi birleştirir.
+    - String ile &str'yi birleştirir.
     - Sol operandın ownership'ini alır (move semantics)
     - Sağ operand **`&str`** olmalıdır.
     
     ```rust
     let s1 = String::from("Hello");
-    let s2 = String::from(" World");
-    let s3 = s1 + &s2; // s1 move edilir, s2 referans olarak kullanılır
+    let s2 = "World!";
+    let s3 = s1 + s2; //  // s1'in ownership'i alınır, s2 referans olarak kullanılır.
     println!("{}", s3); // Çıktı: "Hello World"
     // println!("{}", s1); // Hata! s1 artık geçersiz
     ```
+    - Yukarıda, s1 (String) → Ownership'i + operatörü tarafından alınır (artık kullanılamaz).
+    - Performnas olarak avantajlıdır çünkü s1'in sahip olduğu bellek alanına doğrudan ekleme yapılır (yeniden tahsis gerekmez).
+    
+    Alternatif olarak aşağıdaki kullanım da mümkündür;
+    ```rust
+    let s1 = String::from("Hello");
+    let s2 = String::from(" World!");
+    let s3 = s1 + &s2;
+
+    ```
+    ***💡 Not :**  Bu kod doğru çalışır çünkü s1 + &s2 ifadesinde s1 sahipliğini bırakır ve s2 referans olarak kullanılır. Sonuç olarak s3 yeni bir String olur.*
+
     
     1. **`format!` Makrosu ile Karmaşık Birleştirmeler :**
-        - Birden fazla String'i verimli şekilde birleştirir
-        - Ownership almaz
-        - Okunabilir syntax sunar
+        - Birden fazla String'i verimli şekilde birleştirir.
+        - Ownership almaz.
+        - Okunabilir syntax sunar.
         - Performans avantajı sunar çünkü `format!` genellikle `+` zincirlerinden daha verimlidir.
         
         ```rust
@@ -389,8 +414,8 @@ Rust'ta metinlerle çalışmak için iki ana tür vardır:
         
 
 1. **`extend()` - Iterator ile Ekleme :** 
-    - Bir iterator'deki tüm öğeleri String'e ekler
-    - **`char`** veya **`&str`** iterator'leri kabul eder
+    - Bir iterator'deki tüm öğeleri String'e ekler.
+    - **`char`** veya **`&str`** iterator'leri kabul eder.
 
 ```rust
 let mut s = String::from("Rust");
@@ -400,8 +425,8 @@ println!("{}", s); // Çıktı: Rust is awesome!
 ```
 
 1. **`insert_str()` ile Belirli Pozisyona Ekleme :**
-    - String'in belirli bir pozisyonuna metin ekler
-    - UTF-8 byte indeksi kullanır
+    - String'in belirli bir pozisyonuna metin ekler.
+    - UTF-8 byte indeksi kullanır.
     
     ```rust
     let mut s = String::from("Hello!");

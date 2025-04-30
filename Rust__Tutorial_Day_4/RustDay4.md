@@ -23,7 +23,7 @@
 
 ```rust
 fn main() {
-	println!("Merhaba, Rust!");
+   println!("Merhaba, Rust!");
 }
 ```
 
@@ -37,7 +37,7 @@ fn main() {
 - Rust'ta parametreli fonksiyonlar, `fn` anahtar kelimesi ile tanımlanır. Parametreler, fonksiyon adından sonra parantez içinde belirtilir.
 - Her parametrenin bir adı ve türü vardır.
 - Fonksiyon imzalarında, her parametrenin türünü bildirmelisiniz çünkü derleyici, parametrelerin türünü otomatik olarak tahmin etmez.
-- Fonksiyon tanımlamalarında; tür açıklamaları gerektirmek, derleyicinin ne tür bir türü kastettiğinizi anlamak için kodun başka bir yerinde bunları kullanmanıza neredeyse hiç ihtiyaç duymaması anlamına gelir.
+- Fonksiyon tanımlamalarında tür açıklamalarının gerekli olması, derleyicinin ne tür bir değer kastettiğinizi anlamak için bu türleri kodun başka bir yerinde kullanmanıza neredeyse hiç ihtiyaç bırakmaz.
 - Parametre türleri, Rust'ın güçlü tip sistemi sayesinde derleme zamanında kontrol edilir.
 
 Parametre Alan Bir Fonksiyon Örneği :
@@ -48,7 +48,7 @@ fn greet(name: &str) {
 }
 ```
 
- *Yukarıdaki fonksiyon &str türünde bir  name değişkeni alır.*
+   *Yukarıdaki fonksiyon &str türünde bir  name değişkeni alır.*
 
 İki Parametre Alan Bir Fonksiyon Örneği :
 
@@ -58,7 +58,7 @@ fn add(x: i32, y: i32) {
 }
 ```
 
-*Yukarıdaki fonksiyon x ve y adında türü i32 olan iki değişken alır. Bu değişkenlerinin toplamını ekrana yazdırır.*
+   *Yukarıdaki fonksiyon x ve y adında türü i32 olan iki değişken alır. Bu değişkenlerinin toplamını ekrana yazdırır.*
 
 Fonksiyon Çağırma : 
 
@@ -66,20 +66,20 @@ Rust dilinde fonksiyon çağırma için; fonksiyon adını ve gerekli parametrel
 
 ```rust
 fn main() {
-	// Fonksiyon çağırma örnekleri:
-	add(5, 3);       // Doğrudan değerlerle çağırma
-	add(10, -2);     // Farklı değerlerle çağırma
+   // Fonksiyon çağırma örnekleri:
+   add(5, 3);       // Doğrudan değerlerle çağırma
+   add(10, -2);     // Farklı değerlerle çağırma
 
-	let a = 7;
-	let b = 4;
-	add(a, b);       // Değişkenlerle çağırma
+   let a = 7;
+   let b = 4;
+   add(a, b);       // Değişkenlerle çağırma
 	
-	add(3 + 2, 4 * 2);  // İfadelerle çağırma
+   add(3 + 2, 4 * 2);  // İfadelerle çağırma
 
-	// Toplama işlemi yapan fonksiyon
-	fn add(x: i32, y: i32) {
-	    println!("Toplam: {}", x + y);
-    }
+   // Toplama işlemi yapan fonksiyon
+   fn add(x: i32, y: i32) {
+       println!("Toplam: {}", x + y);
+   }
 }
 ```
 
@@ -161,7 +161,7 @@ fn carp(a: i32, b: i32) -> i32 {
 }
 ```
 
-- Eğer `;` kullanırsan dönüş olmaz: Çünkü noktalı virgül (`;`) eklenirse, extension’ı statment’’a çevirmiş oluruz rust gün 2’de İfade (Expression) ve Deyim (Statement) Arasındaki Fark bölümünde buna değindik. Ek olarak fonksiyon çağrıları ve bloklar da ifadedir: Yani yukarıdaki *a*b* bir extension’dur ve değer döndürür.
+- Eğer `;` kullanırsan dönüş olmaz: Çünkü noktalı virgül (`;`) eklenirse, extension’ı statment’’a çevirmiş oluruz rust gün 2’de İfade (Expression) ve Deyim (Statement) Arasındaki Fark bölümünde buna değindik. Ek olarak fonksiyon çağrıları ve bloklar da ifadedir: Yani yukarıdaki **a*b** bir extension’dur ve değer döndürür.
 
 ```rust
 fn gecersiz_donus(a: i32, b: i32) -> i32 {
@@ -202,12 +202,12 @@ Bir değişkenin geçerli olduğu ve kullanılabildiği bölgeye **kapsam (scop
 
 ```rust
 fn main() {
-	let x = 5; // x burada tanımlandı
-	{
-	    let y = 10; // y sadece bu blok içinde geçerli
-	    println!("x = {}, y = {}", x, y);
-	}
-	// println!("y = {}", y); // HATA! y bu kapsamın dışında
+   let x = 5; // x burada tanımlandı
+   {
+	   let y = 10; // y sadece bu blok içinde geçerli
+	   println!("x = {}, y = {}", x, y);
+   }
+   // println!("y = {}", y); // HATA! y bu kapsamın dışında
 }
 ```
 
@@ -225,11 +225,11 @@ Bu örnekte; `x` değişkeni `main` fonksiyonunun tamamında geçerlidir.`y` de�
 
 ```rust
 fn main() {
-	let sonuc = {
-	let a = 3;
-	a + 2 // Bu satırın sonunda ; yok => bu değeri döndürür
-	};
-	println!("Sonuç: {}", sonuc); // çıktı: Sonuç: 5
+   let sonuc = {
+      let a = 3;
+      a + 2 // Bu satırın sonunda ; yok => bu değeri döndürür
+   };
+   println!("Sonuç: {}", sonuc); // çıktı: Sonuç: 5
 }
 ```
 
@@ -238,4 +238,4 @@ fn main() {
 
 
 ---
-<< [Day 3](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_3/RustDay3.md) | [Day 5](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_5/RustDay4.md) >>
+<< [Day 3](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_3/RustDay3.md) | [Day 5](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_5/RustDay5.md) >>

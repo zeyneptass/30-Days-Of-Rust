@@ -132,7 +132,7 @@ fn main() {
     }
     ```
     
-    - *Yukarıdaki fonksiyon; 6 sayısı 3’ bölünebildiğinden “*number 3'e bölünebilir.” çıktısını verir. Rust, `if` ifadelerini sırayla kontrol eder ve ilk doğru (`true`) koşulun kod bloğunu çalıştırır. Diğer koşulları kontrol etmez. Bu nedenle, 6 sayısı 2'ye de bölünebilir olmasına rağmen, sadece ilk doğru koşulun çıktısı görüntülenir.
+    - **Yukarıdaki fonksiyon; 6 sayısı 3’ bölünebildiğinden “** number 3'e bölünebilir.” çıktısını verir. Rust, `if` ifadelerini sırayla kontrol eder ve ilk doğru (`true`) koşulun kod bloğunu çalıştırır. Diğer koşulları kontrol etmez. Bu nedenle, 6 sayısı 2'ye de bölünebilir olmasına rağmen, sadece ilk doğru koşulun çıktısı görüntülenir.
     
     ### **Bir let ifadesinde if kullanımı :**
     
@@ -414,7 +414,7 @@ fn main() {
 
 ### 2. While Döngüsü :
 
-Genellikle bir döngü içinde bir koşulu değerlendirme kullanır. 
+Genellikle bir döngü içinde bir koşulu değerlendirmede kullanılır. 
 
 Koşul doğru (`true`) olduğu sürece döngü çalışır. Koşul yanlış (`false`) olduğunda, döngü sona erer.
 
@@ -552,4 +552,4 @@ KALKIŞ!
 ---
 
 ---
-<< [Day 2](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_2/RustDay2.md) | [Day 4](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_4/RustDay4.md) >>
+<< [Day 2](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_2/RustDay2.md) | [Day 4](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust__Tutorial_Day_4/RustDay4.md) >>
