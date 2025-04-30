@@ -494,4 +494,4 @@ Rust'ta String işlemlerini verimli bir şekilde yönetmek için aşağıdaki y�
 
 ---
 
-<< [Day 4](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust__Tutorial_Day_4/RustDay4.md) | [Day 6](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_6/RustDay6.md) >>
+<< [Day 4](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_4/RustDay4.md) | [Day 6](https://github.com/zeyneptass/30-Days-Of-Rust/blob/main/Rust_Tutorial_Day_6/RustDay6.md) >>
