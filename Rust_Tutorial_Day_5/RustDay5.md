@@ -138,7 +138,7 @@
         **Heap’te Alan Tahsis Etme (Allocation) :**
         
         - Heap'te yeterince büyük boş bir blok bulur, bu alanı "kullanımda" olarak işaretler ve o konumun adresini içeren bir pointer (işaretçi) döndürür.
-        - Pointer'ın boyutu sabit olduğu (örneğin, 64-bit sistemde 8 byte) için onu stack üzerinde saklayabiliriz. Ancak gerçek veriye ulaşmak için pointer'ı heap'teki konumu takip etmeliyiz.
+        - Pointer'ın boyutu sabit olduğu (örneğin, 64-bit sistemde 8 byte) için onu stack üzerinde saklayabiliriz. Ancak gerçek veriye ulaşmak için heap'teki konumu takip etmeliyiz.
         - Örneğin aşağıdaki kodda, x değişkeni stack'te bir işaretçi (pointer) olarak saklanır. Veri ise heap'te saklanır.
 
         *Örnek :* 
@@ -340,9 +340,9 @@ Rust'ta metinlerle çalışmak için iki ana tür vardır:
     
     **1. `push_str()` - String'e Metin Ekleme :** 
     
-    - String'in sonuna başka bir metin ekler
-    - Parametre olarak **`&str`** alır
-    - O(1) zaman karmaşıklığına sahiptir (amortized). Yani, bir işlemin "ortalama" (uzun vadeli) zaman karmaşıklığı sabittir. Tek seferde O(1) olmayabilir, ancak bir dizi işlemde ortalama maliyet O(1) olarak kabul edilir. Kısace burada yeniden bellek tahsisi gibi pahalı bir işlem, birçok ucuz işlemle dengelenir.
+    - String'in sonuna başka bir metin ekler.
+    - Parametre olarak **`&str`** alır.
+    - O(1) zaman karmaşıklığına sahiptir (amortized). Yani, bir işlemin "ortalama" (uzun vadeli) zaman karmaşıklığı sabittir. Tek seferde O(1) olmayabilir, ancak bir dizi işlemde ortalama maliyet O(1) olarak kabul edilir. Kısaca burada yeniden bellek tahsisi gibi pahalı bir işlem, birçok ucuz işlemle dengelenir.
     
     ```rust
     let mut s = String::from("Merhaba");
@@ -384,7 +384,7 @@ Rust'ta metinlerle çalışmak için iki ana tür vardır:
     // println!("{}", s1); // Hata! s1 artık geçersiz
     ```
     - Yukarıda, s1 (String) → Ownership'i + operatörü tarafından alınır (artık kullanılamaz).
-    - Performnas olarak avantajlıdır çünkü s1'in sahip olduğu bellek alanına doğrudan ekleme yapılır (yeniden tahsis gerekmez).
+    - Performans olarak avantajlıdır çünkü s1'in sahip olduğu bellek alanına doğrudan ekleme yapılır (yeniden tahsis gerekmez).
     
     Alternatif olarak aşağıdaki kullanım da mümkündür;
     ```rust
@@ -450,7 +450,7 @@ Rust'ta String işlemlerini verimli bir şekilde yönetmek için aşağıdaki y�
     ```
     
 
-1. **Önceden Ayarladığımız Kapasiteyi  `reserve()` Metoduyla Optimize Etme :** 
+2. **Önceden Ayarladığımız Kapasiteyi  `reserve()` Metoduyla Optimize Etme :** 
     
     ```rust
     let mut s = String::new();
@@ -458,7 +458,7 @@ Rust'ta String işlemlerini verimli bir şekilde yönetmek için aşağıdaki y�
     ```
     
 
-1. **Iterasyon ile Çoklu Veri işlemlerinde Optimizasyon :**
+3. **Iterasyon ile Çoklu Veri işlemlerinde Optimizasyon :**
 - `String::new` ile `String` türünü oluşturma işlemi verimsiz bir yaklaşımdır.
     
     ```rust
@@ -479,7 +479,7 @@ Rust'ta String işlemlerini verimli bir şekilde yönetmek için aşağıdaki y�
     ```
     
 
-1. **Temel `extend()` Kullanımı :** 
+5. **Temel `extend()` Kullanımı :** 
 - **`extend()`** metodu, bir koleksiyonu **`Iterator`** ile genişletmek için kullanılır.
 - String'ler için özellikle verimli bir birleştirme yöntemidir.
 - **`extend()`** kapasiteyi önceden tahmin edebilir (Rust 1.54+)
