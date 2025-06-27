@@ -1,3 +1,5 @@
+# Rust Gün 6 :
+
 - Önceki derste Rust’ta stack ve heap kavramları arasındaki fark ile `String` ve `str` türleri arasındaki farka değindim. Aynı zamanda Rust’ın bellek güvenliği için ownership ve stack-heap konseptlerini kullandığını açıklamıştım.
 - Bugün ise rust programlama dilinde `ownership`, `barrowing` ve `referanslar` ile `bellek güvenliğine` ve `slice` türüne  değineceğim.
 
